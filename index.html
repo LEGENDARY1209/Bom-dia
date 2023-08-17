@@ -4,11 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projeto - Bom Dia</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Projeto - Bom dia</h1>
-    <h2><span id="resultado"></span></h2>
+    <div class="container">
+        <h1>Projeto - Bom Dia</h1>
+        <label for="horario">Digite o horário (formato: HH:mm)</label>
+        <input type="text" id="horario" placeholder="HH:mm">
+        <button id="checkBtn">Verificar</button>
+        <h2><span id="resultado"></span></h2>
+    </div>
 
     <script src="main.js"></script>
 </body>
-</html> 
+</html>

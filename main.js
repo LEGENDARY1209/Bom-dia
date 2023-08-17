@@ -1,13 +1,17 @@
 document.addEventListener("DOMContentLoaded", function () {
     var resultadoElement = document.getElementById("resultado");
+    var horarioInput = document.getElementById("horario");
+    var checkBtn = document.getElementById("checkBtn");
 
-    var horario = prompt("Digite o horário (formato: HH:mm)");
-    var cumprimento = getCumprimento(horario);
-    
-    if (cumprimento !== null) {
-        resultadoElement.textContent = cumprimento;
-        console.log(cumprimento);
-    }
+    checkBtn.addEventListener("click", function () {
+        var horario = horarioInput.value;
+        var cumprimento = getCumprimento(horario);
+
+        if (cumprimento !== null) {
+            resultadoElement.textContent = cumprimento;
+            resultadoElement.style.color = getColorForCumprimento(cumprimento);
+        }
+    });
 });
 
 function getCumprimento(horario) {
@@ -26,13 +30,23 @@ function getCumprimento(horario) {
 
     var cumprimento;
 
-    if (hora < 12) {
+    if (hora >= 0 && hora < 12) {
         cumprimento = "Bom dia!";
-    } else if (hora < 18) {
+    } else if (hora >= 12 && hora < 18) {
         cumprimento = "Boa tarde!";
     } else {
         cumprimento = "Boa noite!";
     }
 
     return cumprimento;
+}
+
+function getColorForCumprimento(cumprimento) {
+    if (cumprimento === "Bom dia!") {
+        return "#00aeff"; /* Azul claro */
+    } else if (cumprimento === "Boa tarde!") {
+        return "#ff7f50"; /* Tom de laranja */
+    } else {
+        return "#8a2be2"; /* Tom de roxo */
+    }
 }
